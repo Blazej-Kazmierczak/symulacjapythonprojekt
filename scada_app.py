@@ -109,7 +109,7 @@ class SCADAWindow(QWidget):
         self.fm1 = FlowMeterItem(520, 330, "FM1"); self.fm2 = FlowMeterItem(1380, 330, "FM2")
         self.scene.addItem(self.z1); self.scene.addItem(self.z2); self.scene.addItem(self.fm1); self.scene.addItem(self.fm2)
 
-        PipeItem([(150, 400), (300, 400)], "LINIA 1").attach_to_scene(self.scene)
+        PipeItem([(150, 400), (300, 400)], "").attach_to_scene(self.scene)
         PipeItem([(440, 400), (600, 400), (600, 100), (650, 100)]).attach_to_scene(self.scene)
         PipeItem([(750, 100), (900, 100), (900, 400), (1100, 400)]).attach_to_scene(self.scene)
         PipeItem([(900, 10), (900, 100)], "DOMY 2").attach_to_scene(self.scene)

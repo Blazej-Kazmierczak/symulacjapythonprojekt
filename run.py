@@ -1,3 +1,4 @@
+# run.py
 import sys
 from PyQt5.QtWidgets import QApplication
 from ui.scada_app import SCADAWindow

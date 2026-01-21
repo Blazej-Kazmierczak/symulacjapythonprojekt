@@ -56,16 +56,16 @@ class SewageSimulation:
         dt = self.dt
         s = self.sig
 
-        # 1. Generowanie dopływu
+        #Generowanie dopływu
         s.q_in_O1 = self.inflow_mult_O1 * self.inflow_O1.flow(s.t)
         s.q_in_O2 = self.inflow_mult_O2 * self.inflow_O2.flow(s.t)
 
-        # 2. Logika Sterowania
+        #Logika Sterowania
         control_station(self.P1, self.alarms, dt)
         control_station(self.P2, self.alarms, dt)
 
         
-        max_out_t1 = self.T1_well.level_m * 0.1 # Grawitacja
+        max_out_t1 = self.T1_well.level_m * 0.1 #Grawitacja
         q_out_t1 = 0.0 if self.P1.inlet_valve_closed else max_out_t1
        
         if self.T1_well.level_m <= 0: q_out_t1 = 0.0
@@ -73,19 +73,19 @@ class SewageSimulation:
         self.T1_well.add_volume((s.q_in_O1 - q_out_t1) * dt)
         s.level_T1 = self.T1_well.level_m
 
-        # 4. Bilans P1
+        #Bilans P1
         q_p1_expected = sum(p.actual_flow() for p in self.P1.pumps)
-        s.q_p1_meas = q_p1_expected # Uproszczenie dla stabilności
+        s.q_p1_meas = q_p1_expected 
         if any(p.state.failed for p in self.P1.pumps if p.state.enabled): s.q_p1_meas = 0.0
         
         self.P1.wet_well.add_volume((q_out_t1 - s.q_p1_meas) * dt)
 
-        # 5. Bilans Studnia (T2)
+        #Bilans Studnia (T2)
         q_out_t2 = s.level_T2 * 0.05
         self.T2_well.add_volume((s.q_p1_meas - q_out_t2) * dt)
         s.level_T2 = self.T2_well.level_m
 
-        # 6. Bilans P2
+        #Bilans P2
         q_in_total_p2 = q_out_t2 + s.q_in_O2
         q_into_p2 = 0.0 if self.P2.inlet_valve_closed else q_in_total_p2
         

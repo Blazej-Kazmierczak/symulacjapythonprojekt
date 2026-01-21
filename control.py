@@ -5,11 +5,11 @@ def control_station(st, alarms, dt):
     lvl = ww.level_m
 
     # --- DEFINICJA PROGÓW ---
-    L_STOP = 0.8          # Stop całkowity (suchobieg)
+    L_STOP = 0.8          # Stop całkowity 
     L_START_1 = 2.0       # Start pierwszej pompy
-    L_START_2 = 3.0       # Start drugiej pompy (kryzys)
+    L_START_2 = 3.0       # Start drugiej pompy 
     L_CRITICAL_CLOSE = 4.0 # Zamknięcie zasuwy
-    L_CRITICAL_OPEN = 3.8  # Otwarcie zasuwy (histereza)
+    L_CRITICAL_OPEN = 3.0  # Otwarcie zasuwy 
 
    
     swap_limit = getattr(st, 'swap_limit', 60)

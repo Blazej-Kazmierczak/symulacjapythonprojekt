@@ -1,3 +1,4 @@
+# src/sewage_sim/components.py
 from dataclasses import dataclass, field
 from .types import PumpState, ValveState
 
