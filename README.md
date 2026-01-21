@@ -2,11 +2,13 @@
 Symulator Kaskady Przepompowni Ścieków (SCADA)
 ----------------------------------------------------------------------
 1. O projekcie:
+   
 Projekt jest aplikacją typu SCADA (Supervisory Control and Data Acquisition) napisaną w języku Python przy użyciu biblioteki PyQt5. Symuluje on pracę układu dwóch przepompowni (P1 i P2) działających w kaskadzie, wraz z systemem rurociągów, studni pośrednich oraz logiką sterowania automatycznego.
 
 Celem projektu jest wizualizacja procesów hydraulicznych, testowanie algorytmów sterowania (rotacja pomp, obsługa awarii) oraz monitorowanie stanów alarmowych w czasie rzeczywistym.
 
 2. Struktura Projektu:
+
 Kod został podzielony na moduły zgodnie z wzorcem MVC (Model-View-Controller) w celu zachowania czytelności i łatwości rozbudowy:
 
 run.py: 
@@ -31,6 +33,7 @@ inflow.py: Generatory dopływu ścieków (model dobowy z szumem oraz stały dop�
 types.py: Definicje typów danych (dataclasses) dla stanów pomp i zaworów.
 
 3. Kluczowe Funkcjonalności:
+   
 Symulacja Fizyki Płynów: Obliczanie poziomów w zbiornikach na podstawie bilansu dopływu/odpływu oraz charakterystyki geometrycznej studni.
 
 Automatyka Sterowania:
@@ -41,6 +44,7 @@ Rotacja pomp: Równomierne zużycie urządzeń poprzez cykliczną zmianę pompy 
 Redundancja: Automatyczne uruchomienie pompy rezerwowej w przypadku awarii pompy podstawowej.
 
 Wizualizacja SCADA:
+
 Animowane poziomy cieczy w zbiornikach.
 
 Sygnalizacja stanu pracy (zielony) i awarii (czerwony) na schemacie technologicznym.
@@ -56,6 +60,7 @@ Ręczne sterowanie zasuwami.
 Zmiana parametrów symulacji (wielkość dopływu, prędkość pomp) "w locie".
 
 4. Instrukcja Uruchomienia
+
 Wymagania:
 
 Python 3.8+
@@ -71,7 +76,9 @@ Uruchomienie: Upewnij się, że w folderze config/ znajduje się plik default.ya
 python run.py
 ----------
 5. Plany Rozwoju i Możliwe Usprawnienia:
+   
 Projekt stanowi solidną bazę do dalszej rozbudowy. W kolejnych wersjach planowane jest wprowadzenie następujących optymalizacji:
+
 - Pełna parametryzacja w pliku YAML:Obecnie progi sterowania (L_START, L_STOP) są zdefiniowane w kodzie (control.py). Docelowo zostaną przeniesione do pliku config/default.yaml, co pozwoli na zmianę logiki działania bez ingerencji w kod źródłowy.
 - Zaawansowana fizyka przepływu:
 Zastąpienie liniowego modelu wypływu grawitacyjnego wzorem Torricellego
