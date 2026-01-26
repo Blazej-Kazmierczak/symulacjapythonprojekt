@@ -82,9 +82,10 @@ Projekt stanowi solidną bazę do dalszej rozbudowy. W kolejnych wersjach planow
 - Pełna parametryzacja w pliku YAML:Obecnie progi sterowania (L_START, L_STOP) są zdefiniowane w kodzie (control.py). Docelowo zostaną przeniesione do pliku config/default.yaml, co pozwoli na zmianę logiki działania bez ingerencji w kod źródłowy.
 - Zaawansowana fizyka przepływu:
 Zastąpienie liniowego modelu wypływu grawitacyjnego wzorem Torricellego
-(Q=k*(2gh)^-2), co zwiększy realizm opróżniania zbiorników przy niskich stanach cieczy. 
+(Q=k*(2gh)^1/2), co zwiększy realizm opróżniania zbiorników przy niskich stanach cieczy. 
 - Wielowątkowość (Multithreading):
 Przeniesienie pętli obliczeniowej symulacji (sim.step()) do osobnego wątku (QThread). Oddzielenie warstwy obliczeniowej od wątku GUI zapobiegnie potencjalnym przycięciom interfejsu przy bardziej złożonych obliczeniach.
 - Archiwizacja danych (Data Logging):Dodanie modułu zapisującego historię pomiarów, stanów pomp oraz wystąpień alarmów do zewnętrznego pliku (CSV) lub bazy danych (SQLite), co pozwoli na późniejszą analizę pracy obiektu.
 - Sterowanie PID:
 Implementacja regulatora PID dla sterowania prędkością obrotową pomp (falowniki), aby utrzymywać stały poziom ścieków w studni odbiorczej zamiast obecnego sterowania dwustanowego.
+
